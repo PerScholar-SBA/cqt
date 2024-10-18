@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Queris List</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Queris List</h1>
+<table border="1">
+    <tr>
+        <th>Customer Name</th>
+        <th>Assigned To</th>
+        <th>Product Name</th>
+        <th>Query text</th>
+        <th>Query Status</th>
+        <th>Actions</th>
+    </tr>
+    <!-- Iterate over the 'customers' object from the controller -->
+    <tr th:each="query : ${queries}">
+        <td th:text="${query.customer.name}">Customer Name</td>
+        <td th:text="${query.employee.name}">Employee Name</td>
+        <td th:text="${query.product.name}">Product Name</td>
+        <td th:text="${query.queryText}">Query Text</td>
+        <td th:text="${query.status}">Query Status</td>
+        <td>
+            <a th:href="@{/queries/edit/{id}(id=${query.id})}" class="button-link light-blue">Edit</a>
+            <a th:href="@{/queries/delete/{id}(id=${query.id})}" class="button-link red">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/home}">Back to Home</a>
+</body>
+</html>

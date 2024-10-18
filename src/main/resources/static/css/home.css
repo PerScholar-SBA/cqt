@@ -1,0 +1,83 @@
+body {
+    background-color: #f0f4f8; /* Dark Blue */
+    color: #1c1f4c; /* Dark Blue Text */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #8b0000; /* Dark Red */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Ensure space between cards */
+    padding: 20px;
+}
+
+.card {
+    background-color: #f0f8ff; /* Light Background */
+    border: 2px solid #8b0000; /* Dark Red */
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(30% - 10px); /* Two cards per row, accounting for gap */
+    margin-bottom: 20px; /* Space between rows */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 15px rgba(139, 0, 0, 0.6); /* Shadow + Glowing Red */
+    transition: box-shadow 0.3s ease; /* Smooth shadow effect */
+    gap: 2%; /* Space between cards */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 25px rgba(139, 0, 0, 0.9); /* Stronger glow on hover */
+}
+
+.card h2 {
+    text-align: center;
+    color: #1c1f4c; /* Dark Blue */
+}
+
+.btn {
+    display: block;
+    width: 55%;
+    padding: 10px;
+    margin: 10px auto; /* Center button */
+    text-align: center;
+    background-color: #8b0000; /* Dark Red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #600000; /* Darker Red for hover */
+}
+
+nav {
+    background-color: #8b0000; /* Dark Red for nav */
+    overflow: hidden;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    padding: 14px 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #ddd;
+    color: black;
+}

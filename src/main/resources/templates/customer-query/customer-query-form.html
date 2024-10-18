@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create or Edit Query</title>
+    <link th:href="@{/css/form.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1 th:text="${customerQuery.id != null ? 'Edit Query' : 'Create Query'}"></h1>
+
+<form th:action="@{/customer-queries/save}" th:object="${customerQuery}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Customer lookup field -->
+    <label for="customer">Customer</label>
+    <select id="customer" th:field="*{customer.id}" required>
+        <option value="" disabled>Select Customer</option>
+        <option th:each="customer : ${customers}"
+                th:value="${customer.id}"
+                th:text="${customer.name}"
+                th:selected="${customer.id == customerQuery.customer.id}">
+        </option>
+    </select>
+
+    <!-- Product lookup field -->
+    <label for="product">Product</label>
+    <select id="product" th:field="*{product.id}" required>
+        <option value="" disabled>Select a Product</option>
+        <option th:each="product : ${products}"
+                th:value="${product.id}"
+                th:text="${product.name}"
+                th:selected="${product.id == customerQuery.product.id}">
+        </option>
+    </select>
+
+    <!-- Query Text -->
+    <label for="queryText">Query Text</label>
+    <input type="text" id="queryText" th:field="*{queryText}" required />
+
+<!--    &lt;!&ndash; Open Date &ndash;&gt;-->
+<!--    <label for="openDate">Open Date</label>-->
+<!--    <input type="date" id="openDate" th:field="*{openDate}" required />-->
+
+    <button type="submit">Save Query</button>
+</form>
+
+<a th:href="@{/customer-queries}">Back to Customer Queries List</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<!-- navbar.html -->
+<!-- navbar.html -->
+<div th:fragment="navbar">
+    <nav>
+        <ul>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/customer-queries}">Customer Queries</a></li>
+            <li><a th:href="@{/cqtc}">Query Transactions</a></li>
+            <li><a th:href="@{/employees}">Employees</a></li>
+            <li><a th:href="@{/customers}">Customers</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/about}">About</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

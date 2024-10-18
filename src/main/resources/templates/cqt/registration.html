@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" th:href="@{/css/registration.css}">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Registration Form</h1>
+
+<form th:action="@{/register}" method="post">
+    <!-- Common Fields for all roles -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required>
+
+    <!-- Dropdown to select role (Customer, Employee, Administrator) -->
+    <label for="role">Role:</label>
+    <select id="role" name="role" th:change="showAdditionalFields(this.value)">
+        <option value="Customer">Customer</option>
+        <option value="Employee">Employee</option>
+        <option value="Administrator">Administrator</option>
+    </select>
+
+    <!-- Customer-specific fields (hidden by default, displayed if role is Customer) -->
+    <div id="customerFields" style="display: none;">
+        <label for="productPurchased">Product Purchased:</label>
+        <input type="text" id="productPurchased" name="productPurchased">
+    </div>
+
+    <!-- Employee-specific fields (hidden by default, displayed if role is Employee) -->
+    <div id="employeeFields" style="display: none;">
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required>
+
+        <label for="employeeId">Employee ID:</label>
+        <input type="text" id="employeeId" name="employeeId" required>
+    </div>
+
+    <!-- Administrator-specific fields (hidden by default, displayed if role is Administrator) -->
+    <div id="adminFields" style="display: none;">
+        <label for="adminCode">Admin Code:</label>
+        <input type="text" id="adminCode" name="adminCode" required>
+    </div>
+
+    <!-- Password for all roles -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <!-- Submit Button -->
+    <button type="submit">Register</button>
+</form>
+
+<!-- JavaScript to show/hide fields based on role selection -->
+<script>
+    function showAdditionalFields(role) {
+        document.getElementById('customerFields').style.display = role === 'Customer' ? 'block' : 'none';
+        document.getElementById('employeeFields').style.display = role === 'Employee' ? 'block' : 'none';
+        document.getElementById('adminFields').style.display = role === 'Administrator' ? 'block' : 'none';
+    }
+</script>
+</body>
+</html>
+Explanation:
+Common Fields:
+
+Name, Email, Phone, Address, and Password fields are required for all roles.
+Role Selection:
+
+A dropdown (<select>) allows the user to choose their role (Customer, Employee, Administrator). Based on the selection, additional fields are displayed.
+    Role-Specific Fields:
+
+    Customer: A field to capture the product the customer purchased.
+    Employee: Fields for department and employee ID.
+    Administrator: A field for admin code to verify their identity.
+    JavaScript for Dynamic Field Display:
+
+    A simple JavaScript function showAdditionalFields is used to display the relevant fields based on the selected role.
+    Form Submission:
+
+    The form submits to a backend endpoint (e.g., /register), which would handle the role-specific registration logic.
+    Backend (Java Controller Example in Spring)
+    In your Spring controller, you would handle the registration form submission by checking the role and performing appropriate actions:
+
+    java
+    Copy code
+    @PostMapping("/register")
+    public String registerUser(@RequestParam("name") String name,
+    @RequestParam("email") String email,
+    @RequestParam("phone") String phone,
+    @RequestParam("address") String address,
+    @RequestParam("role") String role,
+    @RequestParam("password") String password,
+    @RequestParam(value = "productPurchased", required = false) String productPurchased,
+    @RequestParam(value = "department", required = false) String department,
+    @RequestParam(value = "employeeId", required = false) String employeeId,
+    @RequestParam(value = "adminCode", required = false) String adminCode) {
+    // Handle the registration logic based on the role
+    switch (role) {
+    case "Customer":
+    // Save customer with productPurchased info
+    break;
+    case "Employee":
+    // Save employee with department and employeeId
+    break;
+    case "Administrator":
+    // Verify adminCode and save administrator
+    break;
+    }
+    return "redirect:/home";  // Redirect after successful registration
+    }

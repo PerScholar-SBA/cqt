@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <title>CRM Application - Dashboard</title>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Welcome to the CRM Dashboard</h1>
+
+<section>
+    <!-- Admin specific content -->
+
+    <div th:if="${authorization != null and authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+        <h2>Admin Dashboard</h2>
+        <p>Manage users, view reports, and configure system settings.</p>
+        <ul>
+            <li><a th:href="@{/customers}">Customers</a></li>
+            <li><a th:href="@{/employees}">Employee</a></li>
+            <li><a th:href="@{/products}">Products</a></li>
+            <li><a th:href="@{/admin/users}">Manage Users</a></li>
+            <li><a th:href="@{/admin/reports}">View Reports</a></li>
+            <li><a th:href="@{/admin/settings}">System Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Employee specific content -->
+    <div th:if="${authorization != null and authorization.expression('hasRole(''ROLE_EMPLOYEE'')')}">
+        <h2>Employee Dashboard</h2>
+        <p>View customer queries and manage tasks.</p>
+        <ul>
+            <li><a th:href="@{/employee/tasks}">Manage Products</a></li>
+            <li><a th:href="@{/employee/queries}">Customer Queries</a></li>
+        </ul>
+    </div>
+
+    <!-- Customer specific content -->
+    <div th:if="${authorization != null and #authorization.expression('hasRole(''ROLE_CUSTOMER'')')}">
+        <h2>Customer Dashboard</h2>
+        <p>View your queries and profile details.</p>
+        <ul>
+            <li><a th:href="@{/customer/queries}">My Queries</a></li>
+            <li><a th:href="@{/customer/products}">My Products</a></li>
+            <li><a th:href="@{/customer/profile}">Profile</a></li>
+        </ul>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 CRM Application. All rights reserved.</p>
+</footer>
+</body>
+</html>

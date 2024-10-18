@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Relation Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script th:src="@{/js/draggable.js}" defer></script>
+</head>
+<body>
+<!-- Include the navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Welcome to Our CRM System</h1>
+<div class="container" id="cardContainer">
+    <div class="card" draggable="true">
+        <h2>Products</h2>
+        <a href="/products" class="btn">View Products</a>
+        <a href="/products/new" class="btn">Add New Product</a>
+    </div>
+    <div class="card" draggable="true">
+        <h2>Employees</h2>
+        <a href="/employees" class="btn">View Employees</a>
+        <a href="/employees/new" class="btn">Add New Employee</a>
+    </div>
+    <div class="card" draggable="true">
+        <h2>Customers</h2>
+        <a href="/customers" class="btn">View Customers</a>
+        <a href="/customers/new" class="btn">Add New Customer</a>
+    </div>
+    <div class="card" draggable="true">
+        <h2>Queries</h2>
+        <a href="/queries" class="btn">View Queries</a>
+        <a href="/queries/new" class="btn">Add New Query</a>
+    </div>
+    <div class="card" draggable="true">
+        <h2>Customer Queries</h2>
+        <a href="/customer-queries" class="btn">View Customer Queries</a>
+        <a href="/customer-queries/new" class="btn">Add New Customer Query</a>
+    </div>
+    <div class="card" draggable="true">
+        <h2>Customer Queries Transactions</h2>
+        <a href="/cqtc " class="btn">View Customer Queries Transactions</a>
+<!--        <a href="/customer /new" class="btn">Add New Customer Query Transaction</a>-->
+    </div>
+</div>
+
+<a th:href="@{/register}" class="btn">Registration</a>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create or Edit Product</title>
+    <link th:href="@{/css/form.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1 th:text="${product.id != null ? 'Edit Product' : 'Create Product'}"></h1>
+
+<form th:action="@{/products/save}" th:object="${product}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="name">Name</label>
+    <input type="text" id="name" th:field="*{name}" required />
+
+    <label for="price">Price</label>
+    <input type="text" id="price" th:field="*{price}" required />
+
+    <label for="quantity">Quantity</label>
+    <input type="text" id="quantity" th:field="*{quantity}" required />
+
+    <label for="category">Category</label>
+    <select id="category" th:field="*{category}" required>
+        <option th:value="HARDWARE">HARDWARE</option>
+        <option th:value="SOFTWARE">SOFTWARE</option>
+        <option th:value="SERVICE">SERVICE</option>
+        <option th:value="ELECTRONICS ">ELECTRONICS</option>
+        <option th:value="FURNITURE">FURNITURE</option>
+        <option th:value="ACCESSORIES">ACCESSORIES</option>
+        <option th:value="HOME_APPLIANCES">HOME_APPLIANCES</option>
+        <option th:value="FOOTWARE">FOOTWARE</option>
+    </select>
+
+    <label for="description">Description</label>
+    <input type="text" id="description" th:field="*{description}" required />
+
+    <label for="warranty_end_date">Warranty End Date</label>
+    <input type="date" id="warranty_end_date" th:field="*{warrantyEndDate}" placeholder="yyyy-MM-dd" />
+
+    <button type="submit">Save Product</button>
+</form>
+
+<a th:href="@{/products}">Back to Products List</a>
+</body>
+</html>

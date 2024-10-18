@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Queris List</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Queris List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Customer</th>
+        <th>Employee</th>
+        <th>Status</th>
+        <th>Transaction DateTime</th>
+        <th>Notes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.customer.name}"></td>
+        <td th:text="${transaction.employee.name}"></td>
+        <td th:text="${transaction.status}"></td>
+        <td th:text="${#temporals.format(transaction.transactionDateTime, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${transaction.employeeNotes}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/home}">Back to Home</a>
+</body>
+</html>

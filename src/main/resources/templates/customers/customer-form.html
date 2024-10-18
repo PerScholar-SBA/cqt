@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create or Edit Customer</title>
+    <link th:href="@{/css/form.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1 th:text="${customer.id != null ? 'Edit Customer' : 'Create Customer'}"></h1>
+
+<form th:action="@{/customers/save}" th:object="${customer}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="name">Name</label>
+    <input type="text" id="name" th:field="*{name}" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" th:field="*{email}" required />
+
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" th:field="*{phone}" required />
+
+
+    <label for="address">Name</label>
+    <input type="text" id="address" th:field="*{address}" required />
+
+
+    <label for="description">Description</label>
+    <input type="text" id="description" th:field="*{description}"  />
+
+    <label for="rating">Rating</label>
+    <input type="text" id="rating" th:field="*{rating}" readonly />
+
+    <!--    <label for="role">Role</label>-->
+    <!--    <select id="role" th:field="*{role}" required>-->
+    <!--        <option th:value="ADMIN">Admin</option>-->
+    <!--        <option th:value="EMPLOYEE">Employee</option>-->
+    <!--    </select>-->
+
+    <button type="submit">Save Customer</button>
+</form>
+
+<a th:href="@{/customers}">Back to Customer List</a>
+</body>
+</html>

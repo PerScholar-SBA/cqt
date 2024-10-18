@@ -1,0 +1,49 @@
+body {
+    background-color: #f0f8ff; /* Light background to make the content pop */
+    color: #1a1a1a; /* Dark text color */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: darkred; /* Dark red for the title */
+    margin-bottom: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 2px solid #00008B; /* Dark blue border */
+    border-radius: 10px;
+    padding: 20px;
+    width: 25%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    color: #1a1a1a; /* Dark text */
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    background-color: darkred; /* Dark red button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #a60000; /* Darker red on hover */
+}

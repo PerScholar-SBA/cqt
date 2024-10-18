@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Queris List</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Customer Queris List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Product Name</th>
+        <th>Query Text</th>
+        <th>Open Date</th>
+        <th>Close Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate over the list of customer queries -->
+    <tr th:each="query : ${customerQueries}">
+        <td th:text="${query.product.name}"></td>
+        <td th:text="${query.queryText}"></td>
+        <td th:text="${#temporals.format(query.openDate, 'yyyy-MM-dd HH:mm')}"></td>
+        <td>
+            <span th:if="${query.closeDate != null}"
+                  th:text="${#temporals.format(query.closeDate, 'yyyy-MM-dd HH:mm')}"></span>
+            <span th:if="${query.closeDate == null}">Query still open</span>
+        </td>
+        <td>
+            <a th:href="@{/customer-queries/edit/{id}(id=${query.id})}" class="button-link light-blue">Edit</a>
+            <a th:href="@{/customer-queries/delete/{id}(id=${query.id})}" class="button-link red">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/home}">Back to Home</a>
+</body>
+</html>

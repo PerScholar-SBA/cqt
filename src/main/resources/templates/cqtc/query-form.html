@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create or Edit Query</title>
+    <link th:href="@{/css/form.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1 th:text="${query.id != null ? 'Edit Query' : 'Create Query'}"></h1>
+
+<form th:action="@{/queries/save}" th:object="${query}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="customer">Customer</label>
+    <select id="customer" th:field="*{customer}" required>
+        <option th:each="customer : ${customers}"
+                th:value="${customer.id}"
+                th:text="${customer.name}"></option>
+    </select>
+
+    <label for="employee">Employee</label>
+    <select id="employee" th:field="*{employee.id}" required>
+        <option value="" disabled>Select Employee</option>
+        <option th:each="employee : ${employees}"
+                th:value="${employee.id}"
+                th:text="${employee.name}"
+                th:selected="${employee.id == query.employee.id}">
+        </option>
+    </select>
+
+    <label for="product">Product</label>
+    <select id="product" th:field="*{product.id}" required>
+        <option value="" disabled>Select a Product</option>
+        <option th:each="product : ${products}"
+                th:value="${product.id}"
+                th:text="${product.name}"
+                th:selected="${product.id == query.product.id}">
+        </option>
+    </select>
+
+    <label for="queryText">Query Text</label>
+    <input type="text" id="queryText" th:field="*{queryText}" required />
+
+    <label for="status">Status</label>
+    <select id="status" th:field="*{status}" required>
+        <option th:value="OPEN">OPEN</option>
+        <option th:value="IN_PROGRESS">IN_PROGRESS</option>
+        <option th:value="RESOLVED">RESOLVED</option>
+        <option th:value="CLOSED">CLOSED</option>
+    </select>
+
+    <button type="submit">Save Query</button>
+</form>
+
+<a th:href="@{/queries}">Back to Queries List</a>
+</body>
+</html>

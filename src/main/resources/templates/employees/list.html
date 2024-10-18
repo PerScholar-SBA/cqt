@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee List</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Employee List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Rating</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.name}">Name</td>
+        <td th:text="${employee.email}">Email</td>
+        <td th:text="${employee.department}">Department</td>
+        <td th:text="${employee.description}">Description</td>
+        <td>
+            <!-- Display stars based on customer rating -->
+            <!--            <span th:each="star : ${#numbers.sequence(1, employee.rating)}" class="star">&#9733;</span>-->
+            <!--            <span th:each="emptyStar : ${#numbers.sequence(1, 5 - employee.rating)}" class="star">&#9734;</span>-->
+
+<!--            <span th:if="${employee.rating != null}" th:each="i : ${#numbers.sequence(1, employee.rating)}" class="star">★</span>-->
+            <span th:if="${employee.rating != null}"  th:each="star : ${#numbers.sequence(1, employee.rating)}" class="star">&#9733;</span>
+<!--            <span th:if="${employee.rating == null}">No rating available-->
+</span>
+        </td>
+        <td>
+            <a th:href="@{/employees/edit/{id}(id=${employee.id})}" class="button-link light-blue">Edit</a>
+            <a th:href="@{/employees/delete/{id}(id=${employee.id})}" class="button-link red">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/home}">Back to Home</a>
+</body>
+</html>

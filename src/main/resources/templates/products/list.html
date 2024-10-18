@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h1>Product List</h1>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Warrnty_end_date</th>
+        <th>Actions</th>
+
+    </tr>
+    <!-- Iterate over the 'products' object from the controller -->
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}">Name</td>
+        <td th:text="${product.description}">description</td>
+        <td th:text="${product.category}">Category</td>
+        <td th:text="${product.warrantyEndDate}">Warranty End Date</td>
+        <td>
+            <a th:href="@{/products/edit/{id}(id=${product.id})}" class="button-link light-blue">Edit</a>
+            <a th:href="@{/products/delete/{id}(id=${product.id})}" class="button-link red">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/home}">Back to Home</a>
+</body>
+
+</html>

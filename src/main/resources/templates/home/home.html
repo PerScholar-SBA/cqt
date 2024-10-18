@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CQT Management</title>
+    <link rel="stylesheet" href="./home.css">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<h1>CQT Management Dashboard</h1>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container">
+    <div class="card">
+        <h2>Manage Products</h2>
+        <a href="/products" class="btn">Go to Products</a>
+    </div>
+    <div class="card">
+        <h2>Manage Customers</h2>
+        <a href="/customers" class="btn">Go to Customers</a>
+    </div>
+    <div class="card">
+        <h2>Manage Employees</h2>
+        <a href="/employees" class="btn">Go to Employees</a>
+    </div>
+    <div class="card">
+        <h2>Manage Queries</h2>
+        <a href="/queries" class="btn">Go to Queries</a>
+    </div>
+</div>
+</body>
+</html>

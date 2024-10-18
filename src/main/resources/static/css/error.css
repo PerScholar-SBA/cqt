@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8; /* Light gray background */
+    color: #333; /* Dark gray text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+}
+.error-container {
+    background-color: #fff; /* White background for the message */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+}
+h1 {
+    color: #c0392b; /* Dark red color */
+    font-size: 4rem; /* Large size for error code */
+    margin: 0;
+}
+h2 {
+    color: #e74c3c; /* Bright red color */
+    font-size: 1.5rem; /* Medium size for error message */
+    margin-bottom: 20px;
+}
+p {
+    font-size: 1rem; /* Standard text size */
+    color: #555; /* Darker gray for description */
+    margin-bottom: 20px;
+}
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db; /* Blue button */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+a:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+footer {
+    margin-top: 30px;
+    font-size: 0.9rem; /* Smaller font for footer */
+    color: #777; /* Light gray */
+}
