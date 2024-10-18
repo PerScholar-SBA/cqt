@@ -63,20 +63,6 @@ Customer: Submit queries, view responses.
 Database Schema
 [Include a visual diagram of your database schema or a description of the tables and their relationships.]
 
-Contributing
-Contributions are welcome! Please follow these steps:
-
-Fork the repository.
-Create a feature branch (git checkout -b feature/new-feature).
-Commit your changes (git commit -m 'Add new feature').
-Push to the branch (git push origin feature/new-feature).
-Create a new Pull Request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Contact
-Your Name - abdel.bakheit@gmail.com
-Project Link: [GitHub Repository](https://github.com/PerScholar-SBA/cqt.git)
 Backend: Java, Spring Boot, Spring Security, Hibernate
 Frontend: HTML, CSS, JavaScript, Thymeleaf
 Database: MySQL
